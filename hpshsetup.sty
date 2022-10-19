@@ -1,0 +1,671 @@
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\xeCJKsetup{AutoFakeBold=true,AutoFakeSlant=true}
+\setCJKmainfont{Noto Sans CJK TC}
+\setCJKmonofont{Noto Sans CJK TC}
+\setlength{\parskip}{0cm}
+\setlength{\parindent}{1cm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[a4paper,margin=2cm]{geometry}
+\pagestyle{fancy}
+\headheight=15pt
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\baselinestretch}{1.8}
+
+\setlength{\parskip}{8pt}
+\renewcommand{\figurename}{圖}
+\renewcommand{\tablename}{表}
+\cfoot{\small \thepage}
+\chead{\small \TitleName}
+\lhead{}
+\rhead{}
+
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{ref.bib}
+
+
+\renewcommand*{\finentrypunct}
+	{\iffieldequalstr{keywords}{zh}{。}{\adddot}}
+\renewcommand*{\newunitpunct}
+	{\iffieldequalstr{keywords}{zh}{。}{\adddot}}
+\DeclareDelimFormat[bib]{nameyeardelim}{}
+%\DeclareDelimFormat[textcite,parencite]{finalnamedelim}{\space\&\space}
+\DeclareFieldFormat{journaltitle}{\mkbibbold{#1}}
+\DeclareFieldFormat{biblabeldate}{\mkbibbold{\mkbibparens{#1}}}
+
+
+
+\usepackage{titlesec,titletoc}
+% 設定章的標題格式
+%<-----\titleformat{command}[shape]{format}{label}{sep}{before}[after]----->
+%<-----   #1.command: 欲重新設計之指令,如\chapter, \section, \subsection等。
+%<-----   #2.shape: 設定標題格式,可用選項如下:
+%<-----        – hang: 編號與標題文字在同一行(內定值)
+%<-----      – block: 編號與標題文字合在一起為一段落
+%<-----      – display: 編號與標題文字各成一獨立段落
+%<-----      – runin: 編號與標題文字在同一後, 其後接正文
+%<-----      – leftmargin:編號與標題文字排在版面左沿上
+%<-----      – rightmargin:編號與標題文字排在版面右沿上
+%<-----      – drop: 標題嵌入文字段落內
+%<-----      – wrap: 同上,但標題文字長度會自動調整
+%<-----      – frame: 同display,但加上外框
+%<-----  #3.format: 此項內之指令將同時控制章節編號與標題文字之排版方式。
+%<-----  #4.label: 指章節編號及附加符號。此項內之指令是用以控制label 之排版。
+%<-----  #5.sep: 控制章節編號與文字標題之間距。
+%<-----  #6.before: 用於控制章節標題之排版。此選項可能含一個或多個指令, 最後一個指令可帶有一個參數,此參數即代表標題文字。
+%<-----  #7.after: 附加於標題文字後之控制指令。
+%<-----使用titlesec及titletoc設定章節格式 ----->
+% 下列中文名詞的定義，如果以註解方式關閉取消，
+% 則會以系統原先的預設值 (英文) 替代
+% 名詞 \prechaptername 預設值為 Chapter
+% 名詞 \postchaptername 預設值為空字串
+% 名詞 \tablename 預設值為 Table
+% 名詞 \figurename 預設值為 Figure
+%\newcommand\prechaptername{第}  % 出現在每一章的開頭的「第 x 章」
+%\newcommand\postchaptername{章}
+
+
+%<-----設定頁眉、頁尾----->
+%<-----/charpter/使用命令 \thispagestyle 切換到 plain 樣式
+%<-----所以必須重新設置plain樣式後，頁眉、頁尾  格式才能正常。
+%<----- 首先引入 fancyhdr套件
+
+
+\newcommand{\CCNumberA}[1]{\ifcase#1\or{壹}\or{貳}\or{參}\or{肆}\or{伍}\or{陸}\or{柒}\or{捌}\or{玖}\or{拾}
+    \or{拾壹}\or{拾貳}\or{拾參}\or{拾肆}\or{拾伍}\or{拾陸}\or{拾柒}\or{拾捌}\or{拾玖}\or{貳拾}
+    \or{貳拾壹}\or{貳拾貳}\or{貳拾參}\or{貳拾肆}\or{貳拾伍}\or{貳拾陸}\or{貳拾柒}\or{貳拾捌}\or{貳拾玖}\or{參拾}
+    \fi}
+\newcommand{\CCNumberB}[1]{\ifcase#1\or{一}\or{二}\or{三}\or{四}\or{五}\or{六}\or{七}\or{八}\or{九}\or{十}
+     \or{十一}\or{十二}\or{十三}\or{十四}\or{十五}\or{十六}\or{十七}\or{十八}\or{十九}\or{二十}
+     \or{二十一}\or{二十二}\or{二十三}\or{二十四}\or{二十五}\or{二十六}\or{二十七}\or{二十八}\or{二十九}\or{三十}
+     \or{三十一}\or{三十二}\or{三十三}\or{三十四}\or{三十五}\or{三十六}\or{三十七}\or{三十八}\or{三十九}\or{四十}
+     \or{四十一}\or{四十二}\or{四十三}\or{四十四}\or{四十五}\or{四十六}\or{四十七}\or{四十八}\or{四十九}\or{五十}
+     \or{五十一}\or{五十二}\or{五十三}\or{五十四}\or{五十五}\or{五十六}\or{五十七}\or{五十八}\or{五十九}\or{六十}
+     \or{六十一}\or{六十二}\or{六十三}\or{六十四}\or{六十五}\or{六十六}\or{六十七}\or{六十八}\or{六十九}\or{七十}   
+    \fi}
+
+\newcommand{\CCNumberC}[1]{\ifcase#1\or{一}\or{二}\or{三}\or{四}\or{五}\or{六}\or{七}\or{八}\or{九}\or{十}
+     \or{十一}\or{十二}\or{十三}\or{十四}\or{十五}\or{十六}\or{十七}\or{十八}\or{十九}\or{二十}
+     \or{二十一}\or{二十二}\or{二十三}\or{二十四}\or{二十五}\or{二十六}\or{二十七}\or{二十八}\or{二十九}\or{三十}
+     \or{三十一}\or{三十二}\or{三十三}\or{三十四}\or{三十五}\or{三十六}\or{三十七}\or{三十八}\or{三十九}\or{四十}
+     \or{四十一}\or{四十二}\or{四十三}\or{四十四}\or{四十五}\or{四十六}\or{四十七}\or{四十八}\or{四十九}\or{五十}
+     \or{五十一}\or{五十二}\or{五十三}\or{五十四}\or{五十五}\or{五十六}\or{五十七}\or{五十八}\or{五十九}\or{六十}
+     \or{六十一}\or{六十二}\or{六十三}\or{六十四}\or{六十五}\or{六十六}\or{六十七}\or{六十八}\or{六十九}\or{七十}   
+    \fi}
+
+
+\titleformat{\section}    % #1.改變 節 的指令 
+  [block]                         % #2.將標號及標題視為同一個段落
+  {\normalfont}           % #3.標號標題的字形格式
+  {\CCNumberA{\arabic{section}}、}  % #4標號
+  {0pc}    %  #5.標號標題間隔
+  {}     %  #6.標題前之指令
+   []         %  #7.標題後之指令、選擇性輸入
+
+
+\titleformat{\subsection}    % #1.改變 節 的指令 
+  [block]                         % #2.將標號及標題視為同一個段落
+  {\normalfont}           % #3.標號標題的字形格式
+  {\CCNumberB{\arabic{subsection}}、}  % #4標號
+  {0pc}    %  #5.標號標題間隔
+  {}     %  #6.標題前之指令
+   []         %  #7.標題後之指令、選擇性輸入
+
+\titleformat{\subsubsection}    % #1.改變 節 的指令 
+  [block]                         % #2.將標號及標題視為同一個段落
+  {\normalfont}           % #3.標號標題的字形格式
+  {(\CCNumberC{\arabic{subsubsection}})、}  % #4標號
+  {0pc}    %  #5.標號標題間隔
+  {}     %  #6.標題前之指令
+   []         %  #7.標題後之指令、選擇性輸入
+
+%<-----\titlespacing{command}{left}{beforesep}{aftersep}[right]----->
+%<-----   #1.command: 欲重新設計之指令,如\chapter, \section等。
+%<-----  #2.left: 章節標題「左邊」之空白,因shape選項之不同而異。若選用runin,此項設定是指內縮(indent) 之大小。
+%<-----  #3.beforesep: 排版章節標題之前所留之空白。
+%<-----   #4.aftersep: 章節標題之後所留之空白。
+%<-----   #5.right: 若shape 選項是選用hang, display, block或display之一時, 可進一步加此選項於標題末端。
+\titlespacing{\chapter}{0pt}{*0}{*2}
+\titlespacing{\section}{0pt}{*1}{*2}
+\titlespacing{\subsection}{15pt}{*1}{*1}
+\titlespacing{\subsubsection}{30pt}{*1}{*1}
+
+
+%<---原文照刊環境中文處理（\begin{verbatim}）
+%\makeatletter
+%\def\verbatim@font{\rmfamily} %如果使用roman字体族，将sffamily改成rmfamily
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{ifthen}
+\usepackage{pbox}
+\newcounter{TableIndex}          \setcounter{TableIndex}{0}
+\newcounter{FigureIndex}         \setcounter{FigureIndex}{0}
+\newcounter{TableClearedIndex}   \setcounter{TableClearedIndex}{0}
+\newcounter{FigureClearedIndex}  \setcounter{FigureClearedIndex}{0}
+\let\old@makecaption \@makecaption% SAVE PREVAILING \@makecaption STYLE
+\newlength\oldabovecaptionskip
+\setlength\oldabovecaptionskip \abovecaptionskip
+\newlength\oldbelowcaptionskip
+\setlength\oldbelowcaptionskip \belowcaptionskip
+%% \captionGap CAN BE INCREASED TO PLACE MORE SPACE BETWEEN THE CAPTION
+%% LABEL AND THE ACTUAL CAPTION TEXT.
+\newlength\captionGap          \setlength\captionGap{1ex}
+%% \TableDeadMargin AND \FigureDeadMargin REFER TO THE TABLE & FIGURE
+%% MARGIN OF A BOX THAT COUNTS TOWARDS ITS SIZE, BUT IN WHICH NO
+%% ACTIVE DATA FALLS; DEADMARGIN ASSUMED ON BOTH LEFT & RIGHT SIDE.
+\newlength\TableDeadMargin     \setlength\TableDeadMargin{0.375em}
+\newlength\FigureDeadMargin    \setlength\FigureDeadMargin{0em}
+%% INITIALIZE \above- AND \belowcaptionskip VALUES; CAN BE RESET
+%% USED TO SET GAPS ABOVE & BELOW CAPTIONS
+\newcounter{abovecaptionskipterm}  \setcounter{abovecaptionskipterm}{10}
+\newcounter{belowcaptionskipterm}  \setcounter{belowcaptionskipterm}{7}
+%% RESET \@minCaptionBoxWidth TO Default VALUE WITH \relaxCaptionWidth
+%% SET \@minCaptionBoxWidth TO USER VALUE WITH \relaxCaptionWidth[<len>]
+\newlength\@minCaptionBoxWidth
+\newlength\@minCaptionBoxWidthDefault
+\setlength\@minCaptionBoxWidthDefault{1in}
+%% RESET \@maxCaptionBoxWidth TO Default WITH \limitCaptionWidth
+%% SET \@maxCaptionBoxWidth WITH \limitCaptionWidth[<len>]
+\newlength\@maxCaptionBoxWidth
+\newlength\@maxCaptionBoxWidthDefault
+\setlength\@maxCaptionBoxWidthDefault{\textwidth}
+%% DEFINE promptTablesFlag & PROVIDE ROUTINE TO CHANGE IT FROM
+%% "PROMPT"(1) TO "ON HOLD"(0)
+\newcounter{promptTablesFlag}    \setcounter{promptTablesFlag}{1}
+\newcommand\holdTables{\setcounter{promptTablesFlag}{0}}
+%% SAME FOR promptFiguresFlag
+\newcounter{promptFiguresFlag}   \setcounter{promptFiguresFlag}{1}
+\newcommand\holdFigures{\setcounter{promptFiguresFlag}{0}}
+%% DEFAULT CaptionFontSize & TableFontSize AS \small; CAN BE RESET
+\let \CaptionFontSize \normalsize
+\let \TableFontSize \normalsize
+%% DEFAULT TABLE & FIGURE LR ALIGNMENT TO center;
+%% CAN RESET TO flushleft/-right
+\def \LRTablePlacement {center}
+\def \LRFigurePlacement {center}
+%% WITHIN-CAPTION JUSTIFICATION CAN BE SET
+%% OPTIONS: {}, {\raggedleft}, {\raggedright}, or {\centering}
+\def\CaptionJustification{} % <---DEFAULT IS FULL JUSTIFICATION
+
+%% WORKING VARIABLES
+\newlength\DeadMargin
+\newlength\@DataBoxWidth
+\newlength\CaptionBoxWidth
+\newlength\@DataBoxOffset
+\newlength\@CaptionBoxOffset
+\newlength\@captionIDwidth
+\newlength\@captionWidth
+\newlength\@DataBoxSurplus
+
+%% FIGURE & TABLE WRAPPER INITIALIZATIONS
+\def\wrapper{F}
+\def\WrapperTextStyle{\bf\normalsize}
+\def\WrapperTextDefault{DEFAULT WRAPPER}
+\global\def\WrapperText{\noexpand\WrapperTextStyle\WrapperTextDefault}
+\newcommand\WrapperOn[1][]{%
+  \def\wrapper{T}%
+  \ifthenelse{\equal{#1}{}}%
+  {}{\def\WrapperTextDefault{\noexpand#1}}%
+  \global\def%
+     \WrapperText{\noexpand\WrapperTextStyle\WrapperTextDefault}%
+}
+\newcommand\WrapperOff{\def\wrapper{F}}
+\newcommand\Wrapper[1]{\global\def%
+  \WrapperText{\noexpand\WrapperTextStyle\noexpand#1}}
+
+\newcommand\bxtable[4][t]{%
+	\StoreTable[#1]{#2}{#3}{\WrapperText}{\wrapper}{#4}%
+  \ifnum\arabic{promptTablesFlag}=1%
+    \addtocounter{TableClearedIndex}{1}%
+    \def\TableBoxLabel{tbl\roman{TableIndex}}%
+    \def\TableCaptionLabel{tblcap\roman{TableIndex}}%
+    \def\TblCaptionWidthLabel{tblcapwdth\roman{TableIndex}}%
+    \def\TableWrapper{tblwrap\roman{TableIndex}}%
+    \def\TableSource{tblwrap\roman{TableIndex}}
+    \def\WrapperStatus{tblwrapstatus\roman{TableIndex}}%
+    \ReciteTable[#1]{\csname\TableCaptionLabel\endcsname}%
+                    {\csname\TableBoxLabel\endcsname}%
+                    {\csname\TblCaptionWidthLabel\endcsname}%
+                    {\csname\TableWrapper\endcsname}%
+                    {\csname\WrapperStatus\endcsname}%
+		    {\csname\TableSource\endcsname}
+  \fi
+}
+
+\newcommand\StoreTable[6][]{%
+  \addtocounter{TableIndex}{1}%
+  \setlength\DeadMargin\TableDeadMargin%
+  \def\TableBoxLabel{tbl\roman{TableIndex}}%
+  \def\TableCaptionLabel{tblcap\roman{TableIndex}}%
+  \def\TblCaptionWidthLabel{tblcapwdth\roman{TableIndex}}%
+  \def\TableWrapper{tblwrap\roman{TableIndex}}%
+  \def\TableSource{tblwrap\roman{TableIndex}}
+  \def\WrapperStatus{tblwrapstatus\roman{TableIndex}}%
+  \expandafter\SaveCBox\csname\TableBoxLabel\endcsname{\TableFontSize#3}%
+  \expandafter\def\csname\TableCaptionLabel\endcsname{#2}%
+  \expandafter\newlength\csname\TblCaptionWidthLabel\endcsname%
+  \expandafter\setlength\csname\TblCaptionWidthLabel\endcsname%
+                                              \CaptionBoxWidth%
+  \expandafter\edef\csname\TableWrapper\endcsname{#4}%
+  \expandafter\edef\csname\WrapperStatus\endcsname{#5}%
+  \expandafter\edef\csname\TableSource\endcsname{#6}
+%% After storing table, reset wrapper to default value
+  \global\def%
+   \WrapperText{\noexpand\WrapperTextStyle\WrapperTextDefault}%
+}
+
+\newcommand\ReciteTable[7][ht]{%
+  \begin{table}[#1]%
+    \begin{\LRTablePlacement}%
+      \let\@makecaption\new@makecaption%
+      \setlength\abovecaptionskip{\arabic{abovecaptionskipterm}\p@}%
+      \setlength\belowcaptionskip{\arabic{belowcaptionskipterm}\p@}%
+        \set@DataBoxWidth{#3}%
+        \setlength\CaptionBoxWidth{#4}%
+        \set@BoxOffsets%
+        \if T#6%
+          \rule{\@DataBoxOffset}{0in}%
+          \makebox[\@DataBoxWidth][l]{#5}%
+          \rule{\@DataBoxOffset}{0in}\\%
+        \fi
+        \rule{\@CaptionBoxOffset}{0em}%
+        \parbox{\CaptionBoxWidth}{\bx@caption{#2}}%
+        \rule{\@CaptionBoxOffset}{0em}%
+        \par%
+        \rule{\@DataBoxOffset}{0in}%
+        \usebox{#3}%
+        \rule{\@DataBoxOffset}{0in}\\%
+	\par
+        \rule{\@CaptionBoxOffset}{0em}%
+        \parbox{\CaptionBoxWidth}{#7}%
+        \rule{\@CaptionBoxOffset}{0em}%
+
+        \if T#6%
+          \rule{\@DataBoxOffset}{0in}\\%
+          \makebox[\@DataBoxWidth][r]{#5}%
+        \rule{\@DataBoxOffset}{0in}%
+        \fi
+      \let\@makecaption\old@makecaption%
+      \setlength\abovecaptionskip \oldabovecaptionskip%
+      \setlength\belowcaptionskip \oldbelowcaptionskip%
+    \end{\LRTablePlacement}%
+  \end{table}%
+}
+
+\newcommand\nextTable[1][ht]{%
+  \ifnum\arabic{TableClearedIndex}<\arabic{TableIndex}{%
+    \addtocounter{TableClearedIndex}{1}%
+%%  \TableBoxLabel       : tbli,    tblii,    tbliii,    tbliv,    etc.
+%%  \TableCaptionLabel   : tblcapi, tblcapii, tblcapiii, tblcapiv, etc.
+%%  \TblCaptionWidthLabel: tblcapwdthi, tblcapwdthii, tblcapwdthiii,etc.
+    \def\TableBoxLabel{tbl\roman{TableClearedIndex}}%
+    \def\TableCaptionLabel{tblcap\roman{TableClearedIndex}}%
+    \def\TblCaptionWidthLabel{tblcapwdth\roman{TableClearedIndex}}%
+    \def\TableWrapper{tblwrap\roman{TableClearedIndex}}%
+    \def\WrapperStatus{tblwrapstatus\roman{TableClearedIndex}}%
+    \ReciteTable[#1]{\csname\TableCaptionLabel\endcsname}%
+                    {\csname\TableBoxLabel\endcsname}%
+                    {\csname\TblCaptionWidthLabel\endcsname}%
+                    {\csname\TableWrapper\endcsname}%
+                    {\csname\WrapperStatus\endcsname}%
+  }\fi
+}
+
+\newcommand\clearTables{%
+  \clearpage%
+  \clearlistoftables%
+  \clearpage%
+%%DO UNTIL ALL HELD TABLES ARE CLEARED
+  \whiledo{\arabic{TableClearedIndex}<\arabic{TableIndex}}{%
+    \addtocounter{TableClearedIndex}{1}%
+%%  \TableBoxLabel       : tbli,    tblii,    tbliii,    tbliv,    etc.
+%%  \TableCaptionLabel   : tblcapi, tblcapii, tblcapiii, tblcapiv, etc.
+%%  \TblCaptionWidthLabel: tblcapwdthi, tblcapwdthii, tblcapwdthiii,etc.
+    \def\TableBoxLabel{tbl\roman{TableClearedIndex}}%
+    \def\TableCaptionLabel{tblcap\roman{TableClearedIndex}}%
+    \def\TblCaptionWidthLabel{tblcapwdth\roman{TableClearedIndex}}%
+    \def\TableWrapper{tblwrap\roman{TableClearedIndex}}%
+    \def\WrapperStatus{tblwrapstatus\roman{TableClearedIndex}}%
+    \theClearedTable{\csname\TableCaptionLabel\endcsname}%
+                    {\csname\TableBoxLabel\endcsname}%
+                    {\csname\TblCaptionWidthLabel\endcsname}%
+                    {\csname\TableWrapper\endcsname}%
+                    {\csname\WrapperStatus\endcsname}%
+  }%
+}
+
+%% \theClearedTable CAN BE RENEWED IF DIFFERENT OUTPUT FORMAT IS DESIRED
+\newcommand\theClearedTable[6][ht]{%
+%%  CLEAR THIS TABLE ON A PAGE BY ITSELF, CENTERED VERTICALLY
+  \vspace*{\fill}%
+  \ReciteTable[#1]{#2}{#3}{#4}{#5}{#6}%
+  \vspace*{\fill}%
+  \clearpage%
+}
+
+\newcommand\bxfigure[4][t]{%
+	\StoreFigure[#1]{#2}{#3}{\WrapperText}{\wrapper}{#4}%
+  \ifnum\arabic{promptFiguresFlag}=1%
+    \addtocounter{FigureClearedIndex}{1}%
+    \def\FigureBoxLabel{fig\roman{FigureIndex}}%
+    \def\FigureCaptionLabel{figcap\roman{FigureIndex}}%
+    \def\FigCaptionWidthLabel{figcapwdth\roman{FigureIndex}}%
+    \def\FigureWrapper{figwrap\roman{FigureIndex}}%
+    \def\FigureSource{figwrap\roman{FigureIndex}}
+    \def\WrapperStatus{figwrapstatus\roman{FigureIndex}}%
+    \ReciteFigure[#1]{\csname\FigureCaptionLabel\endcsname}%
+                        {\csname\FigureBoxLabel\endcsname}%
+                        {\csname\FigCaptionWidthLabel\endcsname}%
+                        {\csname\FigureWrapper\endcsname}%
+                        {\csname\WrapperStatus\endcsname}%
+			{\csname\FigureSource\endcsname}
+  \fi
+}
+
+\newcommand\StoreFigure[6][]{%
+  \addtocounter{FigureIndex}{1}%
+  \setlength\DeadMargin\FigureDeadMargin%
+  \def\FigureBoxLabel{fig\roman{FigureIndex}}%
+  \def\FigureCaptionLabel{figcap\roman{FigureIndex}}%
+  \def\FigCaptionWidthLabel{figcapwdth\roman{FigureIndex}}%
+  \def\FigureWrapper{figwrap\roman{FigureIndex}}%
+  \def\FigureSource{figwrap\roman{FigureIndex}}
+  \def\WrapperStatus{figwrapstatus\roman{FigureIndex}}%
+  \expandafter\SaveCBox\csname\FigureBoxLabel\endcsname{#3}%
+  \expandafter\def\csname\FigureCaptionLabel\endcsname{#2}%
+  \expandafter\newlength\csname\FigCaptionWidthLabel\endcsname%
+  \expandafter\setlength\csname\FigCaptionWidthLabel\endcsname%
+                                              \CaptionBoxWidth%
+  \expandafter\edef\csname\FigureWrapper\endcsname{#4}%
+  \expandafter\edef\csname\WrapperStatus\endcsname{#5}%
+  \expandafter\edef\csname\FigureSource\endcsname{#6}
+%% After storing figure, reset wrapper to default value
+  \global\def%
+   \WrapperText{\noexpand\WrapperTextStyle\WrapperTextDefault}%
+}
+
+\newcommand\ReciteFigure[7][ht]{%
+  \begin{figure}[#1]%
+    \begin{\LRFigurePlacement}%
+      \let\@makecaption\new@makecaption%
+      \setlength\abovecaptionskip{\arabic{abovecaptionskipterm}\p@}%
+      \setlength\belowcaptionskip{\arabic{belowcaptionskipterm}\p@}%
+        \set@DataBoxWidth{#3}%
+        \setlength\CaptionBoxWidth{#4}%
+        \set@BoxOffsets%
+        \if T#6%
+          \rule{\@DataBoxOffset}{0in}%
+          \makebox[\@DataBoxWidth][l]{#5}%
+          \rule{\@DataBoxOffset}{0in}\\%
+        \fi
+
+        \rule{\@CaptionBoxOffset}{0em}%
+        \parbox{\CaptionBoxWidth}{\bx@caption{#2}}%
+        \rule{\@CaptionBoxOffset}{0em}%
+
+        \par%
+        \rule{\@DataBoxOffset}{0in}%
+        \usebox{#3}%
+        \rule{\@DataBoxOffset}{0in}%
+
+	\par
+        \rule{\@CaptionBoxOffset}{0em}%
+        \parbox{\CaptionBoxWidth}{#7}%
+        \rule{\@CaptionBoxOffset}{0em}%
+
+
+        \if T#6%
+          \rule{\@DataBoxOffset}{0in}\\%
+          \makebox[\@DataBoxWidth][r]{#5}%
+          \rule{\@DataBoxOffset}{0in}%
+        \fi
+      \let\@makecaption\old@makecaption%
+      \setlength\abovecaptionskip\oldabovecaptionskip%
+      \setlength\belowcaptionskip\oldbelowcaptionskip%
+    \end{\LRFigurePlacement}%
+  \end{figure}%
+}
+
+\newcommand\nextFigure[1][ht]{%
+  \ifnum\arabic{FigureClearedIndex}<\arabic{FigureIndex}{%
+    \addtocounter{FigureClearedIndex}{1}%
+%%  \FigureBoxLabel:     : figi,    figii,    figiii,    figiv,    etc.
+%%  \FigureCaptionLabel  : figcapi, figcapii, figcapiii, figcapiv, etc.
+%%  \FigCaptionWidthLabel: figcapwdthi, figcapwdthii, figcapwdthiii,etc.
+    \def\FigureBoxLabel{fig\roman{FigureClearedIndex}}%
+    \def\FigureCaptionLabel{figcap\roman{FigureClearedIndex}}%
+    \def\FigCaptionWidthLabel{figcapwdth\roman{FigureClearedIndex}}%
+    \def\FigureWrapper{figwrap\roman{FigureClearedIndex}}%
+    \def\WrapperStatus{figwrapstatus\roman{FigureClearedIndex}}%
+    \ReciteFigure[#1]{\csname\FigureCaptionLabel\endcsname}%
+                     {\csname\FigureBoxLabel\endcsname}%
+                     {\csname\FigCaptionWidthLabel\endcsname}%
+                     {\csname\FigureWrapper\endcsname}%
+                     {\csname\WrapperStatus\endcsname}%
+  }\fi
+}
+
+\newcommand\clearFigures{%
+  \clearpage%
+  \clearlistoffigures%
+  \clearpage%
+%%DO UNTIL ALL HELD FIGURES ARE CLEARED
+  \whiledo{\arabic{FigureClearedIndex}<\arabic{FigureIndex}}{%
+    \addtocounter{FigureClearedIndex}{1}%
+%%  \FigureBoxLabel      : figi,    figii,    figiii,    figiv,    etc.
+%%  \FigureCaptionLabel  : figcapi, figcapii, figcapiii, figcapiv, etc.
+%%  \FigCaptionWidthLabel: figcapwdthi, figcapwdthii, figcapwdthiii,etc.
+    \def\FigureBoxLabel{fig\roman{FigureClearedIndex}}%
+    \def\FigureCaptionLabel{figcap\roman{FigureClearedIndex}}%
+    \def\FigCaptionWidthLabel{figcapwdth\roman{FigureClearedIndex}}%
+    \def\FigureWrapper{figwrap\roman{FigureClearedIndex}}%
+    \def\WrapperStatus{figwrapstatus\roman{FigureClearedIndex}}%
+    \theClearedFigure{\csname\FigureCaptionLabel\endcsname}%
+                     {\csname\FigureBoxLabel\endcsname}%
+                     {\csname\FigCaptionWidthLabel\endcsname}%
+                     {\csname\FigureWrapper\endcsname}%
+                     {\csname\WrapperStatus\endcsname}%
+  }%
+}
+
+%% \theClearedFigure CAN BE RENEWED IF DIFFERENT OUTPUT FORMAT DESIRED
+\newcommand\theClearedFigure[6][ht]{%
+%%  CLEAR THIS FIGURE ON A PAGE BY ITSELF, CENTERED VERTICALLY
+  \vspace*{\fill}%
+  \ReciteFigure[#1]{#2}{#3}{#4}{#5}{#6}%
+  \vspace*{\fill}%
+  \clearpage%
+}
+
+\newcommand\relaxCaptionWidth[1][\@minCaptionBoxWidthDefault]{%
+  \setlength\@minCaptionBoxWidth{#1}%
+  \ifdim \@minCaptionBoxWidth > \@maxCaptionBoxWidth%
+    \setlength\@maxCaptionBoxWidth\@minCaptionBoxWidth%
+  \fi
+}
+\relaxCaptionWidth% SET INITIAL \@minCaptionBoxWidth TO DEFAULT VALUE
+
+\newcommand\limitCaptionWidth[1][\@maxCaptionBoxWidthDefault]{%
+  \setlength\@maxCaptionBoxWidth{#1}%
+  \ifdim \@maxCaptionBoxWidth < \@minCaptionBoxWidth%
+    \setlength\@minCaptionBoxWidth\@maxCaptionBoxWidth%
+  \fi
+}
+\limitCaptionWidth% SET INITIAL \@maxCaptionBoxWidth TO DEFAULT VALUE
+
+\newcommand\constrainCaptionWidth[2][-1in]{%
+  \ifdim #1 < 0in%
+    \setlength\@minCaptionBoxWidth{#2}%
+    \setlength\@maxCaptionBoxWidth{#2}%
+  \else
+    \ifdim #1 < #2%
+      \setlength\@minCaptionBoxWidth{#1}%
+      \setlength\@maxCaptionBoxWidth{#2}%
+    \else
+      \setlength\@minCaptionBoxWidth{#2}%
+      \setlength\@maxCaptionBoxWidth{#1}%
+    \fi
+  \fi
+}
+
+\newcommand\SaveCBox[2]{%
+  \newsavebox{#1}%
+  \sbox{#1}{#2}%
+  \set@BoxWidths{#1}%
+}
+
+\newcommand\set@BoxWidths[1]{% of DataBox & CaptionBox (-2\DeadMargin)%
+  \set@DataBoxWidth{#1}%
+  \set@CaptionBoxWidth%
+}
+
+\newcommand\set@DataBoxWidth[1]{%
+  \setlength {\@DataBoxWidth}{\widthof{\usebox{#1}}}%
+}
+
+\newcommand\set@CaptionBoxWidth{%
+  \setlength\CaptionBoxWidth\@DataBoxWidth%
+  \addtolength{\CaptionBoxWidth}{-2\DeadMargin}%
+  \ifdim \CaptionBoxWidth < \@minCaptionBoxWidth%
+    \setlength\CaptionBoxWidth\@minCaptionBoxWidth%
+  \fi
+  \ifdim \CaptionBoxWidth > \@maxCaptionBoxWidth%
+    \setlength\CaptionBoxWidth\@maxCaptionBoxWidth%
+  \fi
+}
+
+\newcommand\set@BoxOffsets{%
+  \setlength\@DataBoxSurplus{\@DataBoxWidth}%
+  \addtolength\@DataBoxSurplus{-\CaptionBoxWidth}%
+  \ifdim \@DataBoxSurplus > 0in%
+    \setlength\@CaptionBoxOffset{0.5\@DataBoxSurplus}%
+    \setlength\@DataBoxOffset{0in}%
+  \else
+    \setlength\@CaptionBoxOffset{0in}%
+    \setlength\@DataBoxOffset{-0.5\@DataBoxSurplus}%
+  \fi
+}
+
+\long\def\offset@caption#1#2{%
+  \setlength\@captionIDwidth{\widthofpbox{\CaptionFontSize{#1.}}}%
+  \addtolength\@captionIDwidth\captionGap%
+  \setlength\@captionWidth\CaptionBoxWidth%
+  \addtolength\@captionWidth{-\@captionIDwidth}%
+  \CaptionFontSize{#1.}\hfill\parbox[t]{\@captionWidth}%
+                  {\CaptionJustification\CaptionFontSize{#2.}}%
+}
+
+\long\def\nooffset@caption#1#2{%
+  \CaptionJustification\CaptionFontSize #1.\rule{\captionGap}{0in}#2.%
+}
+
+\long\def\shortleft@caption#1#2{%
+  \raggedright\CaptionFontSize #1.\rule{\captionGap}{0in}#2.%
+}
+
+\long\def\shortcenter@caption#1#2{%
+  \centering\CaptionFontSize #1.\rule{\captionGap}{0in}#2.%
+}
+
+\long\def\shortright@caption#1#2{%
+  \raggedleft\CaptionFontSize #1.\rule{\captionGap}{0in}#2.%
+}
+
+\long\def\new@makecaption#1#2{%
+  \vskip\abovecaptionskip%
+  \sbox\@tempboxa{\CaptionFontSize #1.\rule{\captionGap}{0in}#2.}%
+  \ifdim \wd\@tempboxa >\hsize%
+    \long@caption{#1}{#2}%
+  \else
+    \short@caption{#1}{#2}%
+  \fi
+  \vskip\belowcaptionskip%
+}
+
+\newcommand\captionStyle[2]{%
+  \if o#1\let\long@caption\offset@caption\fi
+  \if n#1\let\long@caption\nooffset@caption\fi
+  \if l#2\let\short@caption\shortleft@caption\fi
+  \if c#2\let\short@caption\shortcenter@caption\fi
+  \if r#2\let\short@caption\shortright@caption\fi
+}
+
+%% SET DEFAULT CAPTION STYLE: CAPTION ID OFFSET FOR LONG CAPTIONS,
+%%                            SHORT CAPTIONS LEFT ALIGNED
+\captionStyle{o}{l}
+
+\newcommand\killtableofcontents{%
+  \renewcommand\tableofcontents{}%
+}
+
+%%LIST OF FIGURES HANDLING:
+\newcounter{lofInvocations}   \setcounter{lofInvocations}{0}
+\newcounter{lofPrints}        \setcounter{lofPrints}{0}
+\let\oldlistoffigures\listoffigures
+
+\newcommand\killlistoffigures{%
+  \def\oldlistoffigures {}%
+  \renewcommand\listoffigures{}%
+}
+
+\newcommand\holdlistoffigures{%
+  \renewcommand\listoffigures{\addtocounter{lofInvocations}{1}}%
+}
+
+\newcommand\clearlistoffigures{%
+  \whiledo{\arabic{lofPrints} < \arabic{lofInvocations}}{%
+    \addtocounter{lofPrints}{1}%
+    \oldlistoffigures%
+  }%
+}
+
+%%LIST OF TABLES HANDLING:
+\newcounter{lotInvocations}   \setcounter{lotInvocations}{0}
+\newcounter{lotPrints}        \setcounter{lotPrints}{0}
+\let\oldlistoftables\listoftables
+
+\newcommand\killlistoftables{%
+  \def\oldlistoftables {}%
+  \renewcommand\listoftables{}%
+}
+
+\newcommand\holdlistoftables{%
+  \renewcommand\listoftables{\addtocounter{lotInvocations}{1}}%
+}
+
+\newcommand\clearlistoftables{%
+  \whiledo{\arabic{lotPrints} < \arabic{lotInvocations}}{%
+    \addtocounter{lotPrints}{1}%
+    \oldlistoftables%
+  }%
+}
+
+%% \hyperactive PROVIDES A CORRECTIVE CAPTION SHIFT WHEN USING THE
+%% hyperref PACKAGE; OPTIONAL ARGUMENT IS SHIFT LENGTH
+\let\bx@caption\caption
+\newlength\hyper@shift
+\newcommand\hyper@cap[1]{\caption{\vspace*{\hyper@shift}#1}}%
+\newcommand\hyperactive[1][-1.55ex]{%
+  \setlength\hyper@shift{#1}\let\bx@caption\hyper@cap}
+
+%% TO RETAIN BACKWARD COMPATIBILITY WITH THE PREDECESSOR TO boxhandler,
+%% THE FOLLOWING ASSIGNMENTS ARE MADE.
+\let\arltable\bxtable
+\let\arlfigure\bxfigure
+
+\endinput
+%%
+%% End of file `boxhandler.sty'.
+
